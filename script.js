@@ -1,9 +1,7 @@
-// let computerRandom = Math.floor(Math.random() * Math.floor(3));
-let computerRandom = 0;
-computerSelection = computerPlay();
-
+let computerRandom;
+let computerSelection;
 function computerPlay() {
-  let computerSelection = '';
+  computerRandom = Math.floor(Math.random() * Math.floor(3));
   if (computerRandom == 0) {
     computerSelection = 'rock';
   } else if (computerRandom == 1) {
@@ -11,13 +9,14 @@ function computerPlay() {
   } else {
     computerSelection = 'scissors';
   }
-  return computerSelection;
+  // return computerSelection;
 }
 
-let playerRandom = null;
-let playerSelection = prompt("Please enter your selection: Rock/Paper/Scissors:").toLowerCase();
-
+let playerSelection;
+let playerRandom;
 function humanPlay() {
+  playerRandom = null;
+  playerSelection = prompt("Please enter your selection: Rock/Paper/Scissors:").toLowerCase();
   while(playerRandom === null) {
     if (playerSelection == "rock") {
       playerRandom = 0;
@@ -30,7 +29,6 @@ function humanPlay() {
       playerSelection = prompt("Please enter \"rock\", \"paper\" or \"scissors\":");
     }
   }
-  return playerSelection;
 }
 
 let computerScore = 0;
@@ -41,21 +39,24 @@ function playRound() {
   if (playerRandom == computerRandom) {
     computerScore;
     userScore;
-    console.log("It's a tie!");
+    // console.log("It's a tie!");
   } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2) || (playerRandom - computerRandom == 2)) {
     computerScore++;
     userScore;
-    console.log("You lose: " + `${computerSelection}` + " beats " + `${playerSelection}` + "!");
+    // console.log("You lose: " + `${computerSelection}` + " beats " + `${playerSelection}` + "!");
   } else {
     computerScore;
     userScore++;
-    console.log("Congratulations! You win!")
+    // console.log("Congratulations! You win!")
   }
 }
 
 function game() {
   for (i=1; i<6; i++) {
     playRound();
+    console.log("Round " + i);
+    console.log("Computer selection " + computerSelection);
+    console.log("Your selection: " + playerSelection);    
     console.log("Computer " + computerScore + ":" + userScore + " You");
     console.log("The game score after round " + i);
     console.log("-----------------------------");
