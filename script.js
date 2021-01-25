@@ -1,6 +1,7 @@
 // let computerRandom = Math.floor(Math.random() * Math.floor(3));
 let computerRandom = 0;
 computerSelection = computerPlay();
+
 function computerPlay() {
   let computerSelection = '';
   if (computerRandom == 0) {
@@ -13,10 +14,10 @@ function computerPlay() {
   return computerSelection;
 }
 
+let playerRandom = null;
 let playerSelection = prompt("Please enter your selection: Rock/Paper/Scissors:").toLowerCase();
 
 function humanPlay() {
-  let playerRandom = null;
   while(playerRandom === null) {
     if (playerSelection == "rock") {
       playerRandom = 0;
@@ -29,12 +30,11 @@ function humanPlay() {
       playerSelection = prompt("Please enter \"rock\", \"paper\" or \"scissors\":");
     }
   }
-  return playerRandom;
+  return playerSelection;
 }
 
 let computerScore = 0;
 let userScore = 0;
-
 function playRound() {
   computerPlay();
   playerRandom = humanPlay();
@@ -44,7 +44,7 @@ function playRound() {
     console.log("It's a tie!");
   } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2) || (playerRandom - computerRandom == 2)) {
     computerScore++;
-    userscore;
+    userScore;
     console.log("You lose: " + `${computerSelection}` + " beats " + `${playerSelection}` + "!");
   } else {
     computerScore;
@@ -56,8 +56,9 @@ function playRound() {
 function game() {
   for (i=1; i<6; i++) {
     playRound();
-    console.log("The game score after round " + i);
     console.log("Computer " + computerScore + ":" + userScore + " You");
+    console.log("The game score after round " + i);
+    console.log("-----------------------------");
   }
 }
 
