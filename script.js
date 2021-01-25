@@ -9,7 +9,6 @@ function computerPlay() {
   } else {
     computerSelection = 'scissors';
   }
-  // return computerSelection;
 }
 
 let playerSelection;
