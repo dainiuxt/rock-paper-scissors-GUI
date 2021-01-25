@@ -29,6 +29,7 @@ function humanPlay() {
       playerSelection = prompt("Please enter \"rock\", \"paper\" or \"scissors\":");
     }
   }
+  return playerRandom;
 }
 
 let computerScore = 0;
@@ -36,7 +37,7 @@ let userScore = 0;
 function playRound() {
   computerPlay();
   playerRandom = humanPlay();
-  if (playerRandom == computerRandom) {
+  if (playerRandom === computerRandom) {
     computerScore;
     userScore;
     // console.log("It's a tie!");
@@ -60,6 +61,13 @@ function game() {
     console.log("Computer " + computerScore + ":" + userScore + " You");
     console.log("The game score after round " + i);
     console.log("-----------------------------");
+  }
+  if (computerScore === userScore) {
+    console.log("Tie.");
+  } else if (computerScore > userScore) {
+    console.log("You lose...");
+  } else {
+    console.log("Congratulations You win!");
   }
 }
 
