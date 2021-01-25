@@ -32,36 +32,32 @@ function humanPlay() {
   return playerRandom;
 }
 
+let computerScore = 0;
+let userScore = 0;
+
 function playRound() {
   computerPlay();
   playerRandom = humanPlay();
-  console.log("Computer: " + computerRandom + "; Player: " + playerRandom);
   if (playerRandom == computerRandom) {
+    computerScore;
+    userScore;
     console.log("It's a tie!");
   } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2) || (playerRandom - computerRandom == 2)) {
+    computerScore++;
+    userscore;
     console.log("You lose: " + `${computerSelection}` + " beats " + `${playerSelection}` + "!");
   } else {
+    computerScore;
+    userScore++;
     console.log("Congratulations! You win!")
   }
 }
 
-let computerScore = 0;
-let userScore = 0;
-
 function game() {
-  for (i=0; i<5; i++) {
+  for (i=1; i<6; i++) {
     playRound();
-    if (playerRandom == computerRandom) {
-      computerScore;
-      userScore;
-    } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2) || (playerRandom - computerRandom == 2)) {
-      computerScore++;
-      userscore;
-    } else {
-      computerScore;
-      userScore++;
-    }
-    console.log(computerScore + ":" + userScore)
+    console.log("The game score after round " + i);
+    console.log("Computer " + computerScore + ":" + userScore + " You");
   }
 }
 
