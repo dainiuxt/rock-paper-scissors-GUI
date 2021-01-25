@@ -1,5 +1,5 @@
-let computerRandom = Math.floor(Math.random() * Math.floor(3));
-
+// let computerRandom = Math.floor(Math.random() * Math.floor(3));
+let computerRandom = 0;
 computerSelection = computerPlay();
 function computerPlay() {
   let computerSelection = '';
@@ -13,18 +13,21 @@ function computerPlay() {
   return computerSelection;
 }
 
-let playerSelection = prompt("Please enter your selection: Rock/Paper/Scissors: ").toLowerCase();
+let playerSelection = prompt("Please enter your selection: Rock/Paper/Scissors:").toLowerCase();
 
 function humanPlay() {
   let playerRandom = null;
-  if (playerSelection == "rock") {
-    playerRandom = 0;
-    } else if (playerSelection == "paper") {
-    playerRandom = 1;
-  } else if (playerSelection == "scissors") {
-    playerRandom = 2;
-  } else {
-    console.log("Please enter \"rock\", \"paper\" or \"scissors\" next time. Bye!");
+  while(playerRandom === null) {
+    if (playerSelection == "rock") {
+      playerRandom = 0;
+      } else if (playerSelection == "paper") {
+      playerRandom = 1;
+    } else if (playerSelection == "scissors") {
+      playerRandom = 2;
+    } else {
+      playerRandom = null;
+      playerSelection = prompt("Please enter \"rock\", \"paper\" or \"scissors\":");
+    }
   }
   return playerRandom;
 }
@@ -42,4 +45,24 @@ function playRound() {
   }
 }
 
-console.log(playRound());
+let computerScore = 0;
+let userScore = 0;
+
+function game() {
+  for (i=0; i<5; i++) {
+    playRound();
+    if (playerRandom == computerRandom) {
+      computerScore;
+      userScore;
+    } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2) || (playerRandom - computerRandom == 2)) {
+      computerScore++;
+      userscore;
+    } else {
+      computerScore;
+      userScore++;
+    }
+    console.log(computerScore + ":" + userScore)
+  }
+}
+
+console.log(game());
