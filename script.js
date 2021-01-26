@@ -1,5 +1,10 @@
 let computerRandom;
 let computerSelection;
+let playerSelection;
+let playerRandom;
+let computerScore = 0;
+let playerScore = 0;
+
 function computerPlay() {
   computerRandom = Math.floor(Math.random() * Math.floor(3));
   if (computerRandom == 0) {
@@ -9,10 +14,9 @@ function computerPlay() {
   } else {
     computerSelection = 'scissors';
   }
+  return computerRandom;
 }
 
-let playerSelection;
-let playerRandom;
 function humanPlay() {
   playerRandom = null;
   playerSelection = prompt("Please enter your selection: Rock/Paper/Scissors:").toLowerCase();
@@ -31,42 +35,35 @@ function humanPlay() {
   return playerRandom;
 }
 
-let computerScore = 0;
-let userScore = 0;
 function playRound() {
-  computerPlay();
-  playerRandom = humanPlay();
   if (playerRandom === computerRandom) {
-    computerScore;
-    userScore;
-    // console.log("It's a tie!");
-  } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2) || (playerRandom - computerRandom == 2)) {
-    computerScore++;
-    userScore;
-    // console.log("You lose: " + `${computerSelection}` + " beats " + `${playerSelection}` + "!");
+    return;
+  } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2)
+           || (playerRandom - computerRandom == 2)) {
+    return computerScore++;
   } else {
-    computerScore;
-    userScore++;
-    // console.log("Congratulations! You win!")
+    return playerScore++;
   }
 }
 
 function game() {
   for (i=1; i<6; i++) {
+    computerPlay();
+    humanPlay();
     playRound();
-    console.log("Round " + i);
-    console.log("Computer selection " + computerSelection);
-    console.log("Your selection: " + playerSelection);    
-    console.log("Computer " + computerScore + ":" + userScore + " You");
-    console.log("The game score after round " + i);
-    console.log("-----------------------------");
+    alert(
+      "Computer selection: " + computerSelection + "\n" +
+      "Your selection: "  + playerSelection + "\n" +
+      "Computer " + computerScore + ":" + playerScore + " You" + "\n" +
+      "After round " + i + "."
+      );
   }
-  if (computerScore === userScore) {
-    console.log("Tie.");
-  } else if (computerScore > userScore) {
-    console.log("You lose...");
+  if (computerScore === playerScore) {
+    alert("Tie.");
+  } else if (computerScore > playerScore) {
+    alert("You lose...");
   } else {
-    console.log("Congratulations You win!");
+    alert("Congratulations You win!");
   }
 }
 
