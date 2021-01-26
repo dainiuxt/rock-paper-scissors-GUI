@@ -1,0 +1,1 @@
+Rock/Paper/Scissors game im JS console human vs computer (rand). 5 rounds. Input in the prompt, results and all selections in console after game finished.
