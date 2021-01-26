@@ -66,5 +66,3 @@ function game() {
     alert("Congratulations You win!");
   }
 }
-
-console.log(game());
