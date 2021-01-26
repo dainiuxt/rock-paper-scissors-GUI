@@ -36,7 +36,7 @@ function humanPlay() {
 }
 
 function playRound() {
-  if (playerRandom === computerRandom) {
+  if (playerRandom == computerRandom) {
     return;
   } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2)
            || (playerRandom - computerRandom == 2)) {
