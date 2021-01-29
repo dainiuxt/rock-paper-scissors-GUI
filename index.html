@@ -2,13 +2,61 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock/Paper/Scissors</title>
+    <link href="minireset.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="main">Rock/Paper/Scissors game im JS; human vs computer. 5 rounds. Input in the prompt, results in alerts. Push this button :)</div>
-    <input id="clickMe" type="button" value="Let's play!" onclick="game();" />
+    <div class="main">
+      <div class="row">
+        <div class="col col-2-lg">
+          <div class="is-center"></div>
+        </div>
+        <div class="col col-8-lg">
+          <div class="row is-center">
+            <h3 class="is-center">Can you beat the machine in Rock/Paper/Scissors?</h3>
+          </div>
+          <div class="row is-center">
+            <div class="rules">Collect 5 points to win.</div>
+          </div>
+          <div class="row is-center">
+            <div class="selection">
+            </div>
+          </div>          
+          <div class="row is-center">
+            <div id="player">
+              <button id="rock" class="button primary" onClick="playRound(this.id)">ROCK</button>
+              <button id="paper" class="button primary" onClick="playRound(this.id)">PAPER</button>
+              <button id="scissors" class="button primary" onClick="playRound(this.id)">SCISSORS</button>
+            </div>
+          </div>
+          <div class="row is-center">
+            <div class="results">
+            </div>
+          </div>
+          <div class="row is-center">
+            <div class="winner">
+            </div>
+          </div>
+          <div class="row is-center">
+            <div clas="controls">
+              <button class="button secondary" onclick="mode();">Dark/Light</button>
+              <button class="button outline primary" onClick="resetGame()">New game</button> 
+            </div>
+          </div>
+      </div>
+      <div class="is-center col col-2-lg">
+      </div>      
+    </div>
     <script src="script.js"></script>
+    <script>
+      function mode() {
+        var element = document.body;
+        element.classList.toggle("dark");
+      }
+    </script>
   </body>
 </html>

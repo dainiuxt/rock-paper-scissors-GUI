@@ -4,6 +4,17 @@ let playerSelection;
 let playerRandom;
 let computerScore = 0;
 let playerScore = 0;
+let round = 0;
+const results = document.querySelector(".results");
+const resultsContent = document.createElement('p');
+resultsContent.textContent = 'Computer ' + computerScore +  ':' + playerScore + ' You';
+results.appendChild(resultsContent);
+
+const selection = document.querySelector(".selection");
+const selectionContent = document.createElement('p');
+
+const winner = document.querySelector(".winner");
+const winnerContent = document.createElement('p');
 
 function computerPlay() {
   computerRandom = Math.floor(Math.random() * Math.floor(3));
@@ -17,52 +28,70 @@ function computerPlay() {
   return computerRandom;
 }
 
-function humanPlay() {
-  playerRandom = null;
-  playerSelection = prompt("Please enter your selection: Rock/Paper/Scissors:").toLowerCase();
-  while(playerRandom === null) {
-    if (playerSelection == "rock") {
-      playerRandom = 0;
-      } else if (playerSelection == "paper") {
-      playerRandom = 1;
-    } else if (playerSelection == "scissors") {
-      playerRandom = 2;
+function resetGame() {
+  computerScore = 0;
+  playerScore = 0;
+  round = 0;
+  resultsContent.textContent = 'Computer ' + computerScore +  ':' + playerScore + ' You';
+  results.appendChild(resultsContent);
+  selectionContent.textContent = ' ';
+  selection.appendChild(selectionContent);
+  winnerContent.textContent = ' ';    
+  winner.appendChild(winnerContent);
+}
+
+function playRound(clicked) {
+  computerRandom = computerPlay();
+  playerSelection = clicked;
+  if (playerSelection === "rock") {
+    playerRandom = 0;
+    } else if (playerSelection === "paper") {
+    playerRandom = 1;
+  } else if (playerSelection === "scissors") {
+    playerRandom = 2;
+  }
+  score();
+  counter();
+}
+
+function score() {
+  if (computerScore < 5 && playerScore < 5) {
+    if (playerRandom == computerRandom) {
+      computerScore;
+      playerScore;
+      selectionContent.textContent = 'Computer chose ' + computerSelection +  ', You coose ' + playerSelection + ': it\'s a tie';
+      selection.appendChild(selectionContent);    
+      resultsContent.textContent = 'Computer ' + computerScore +  ':' + playerScore + ' You';
+      results.appendChild(resultsContent);
+    } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2)
+            || (playerRandom - computerRandom == 2)) {
+      computerScore++;
+      selectionContent.textContent = 'Computer chose ' + computerSelection +  ', You choose ' + playerSelection + ': ' +
+        computerSelection + ' beats ' + playerSelection;
+      selection.appendChild(selectionContent);
+      resultsContent.textContent = 'Computer ' + computerScore +  ' : ' + playerScore + ' You';
+      results.appendChild(resultsContent);
     } else {
-      playerRandom = null;
-      playerSelection = prompt("Please enter \"rock\", \"paper\" or \"scissors\":");
+      playerScore++;
+      selectionContent.textContent = 'Computer chose ' + computerSelection +  ', You coose ' + playerSelection + ': ' +
+        playerSelection + ' beats ' + computerSelection;
+      selection.appendChild(selectionContent);    
+      resultsContent.textContent = 'Computer ' + computerScore +  ':' + playerScore + ' You';
+      results.appendChild(resultsContent);
     }
-  }
-  return playerRandom;
-}
-
-function playRound() {
-  if (playerRandom == computerRandom) {
-    return;
-  } else if ((playerRandom < computerRandom && (computerRandom - playerRandom) != 2)
-           || (playerRandom - computerRandom == 2)) {
-    return computerScore++;
   } else {
-    return playerScore++;
+
   }
 }
 
-function game() {
-  for (i=1; i<6; i++) {
-    computerPlay();
-    humanPlay();
-    playRound();
-    alert(
-      "Computer selection: " + computerSelection + "\n" +
-      "Your selection: "  + playerSelection + "\n" +
-      "Computer " + computerScore + ":" + playerScore + " You" + "\n" +
-      "After round " + i + "."
-      );
-  }
-  if (computerScore === playerScore) {
-    alert("Tie.");
-  } else if (computerScore > playerScore) {
-    alert("You lose...");
-  } else {
-    alert("Congratulations You win!");
+function counter() {
+  if(computerScore === 5 || playerScore === 5) {
+    if (computerScore > playerScore) {
+      winnerContent.textContent = 'Game over. You lost...';    
+      winner.appendChild(winnerContent);
+    } else {
+      winnerContent.textContent = 'You are the winner!';    
+      winner.appendChild(winnerContent);
+    }
   }
 }
